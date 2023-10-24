@@ -21,7 +21,15 @@
   </head>
   <body>
     <div class="slds-grid slds-grid_vertical">
-		<td><%= contact.LastName %></td>
+		<h1>Update Contact Information</h1>
+		<p>Contact First Name: <%= contact.FirstName %></p>
+		<p>Contact Last Name: <%= contact.LastName %></p>
+		<p>Contact ID: <%= contact.Id %></p>
+		<p>Contact Email: <%= contact.Email %></p>
+		<div>
+			<input type="text" placeholder="update contact last name" id="lastname" />
+			<button onclick="updateRecord();">Update Contact</button>
+		</div>
         <!-- <img src="<%- imgSrc %>" alt="Contact QR Code" /> -->
         <button
               class="slds-button slds-button_brand"
@@ -30,10 +38,7 @@
               Update Flag
             </button>
 
-		<div>
-			<input type="text" placeholder="update contact last name" id="lastname" />
-			<button onclick="updateRecord();">Update Contact</button>
-		</div>
+
     </div>
     <script type="text/javascript">
       var sr = {};
