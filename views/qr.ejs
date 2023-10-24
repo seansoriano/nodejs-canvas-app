@@ -21,12 +21,13 @@
   </head>
   <body>
     <div class="slds-grid slds-grid_vertical">
-        <img src="<%- imgSrc %>" alt="Contact QR Code" />
+		<td><%= context %></td>
+        <!-- <img src="<%- imgSrc %>" alt="Contact QR Code" /> -->
         <button
               class="slds-button slds-button_brand"
               onclick="validateQR();"
             >
-              Validate QR
+              Update Flag
             </button>
 
 		<div>
@@ -57,7 +58,7 @@
           data: '{"QRValidated__c": true}',
           success: function (data) {
             if (204 === data.status) {
-              alert("QR Code Validated!");
+              alert("Updated Flag!");
             }
           },
         });
@@ -81,8 +82,7 @@
 				contentType: "application/json",
 				data: JSON.stringify(body),
 				success: function (data) {
-					alert(data.status);
-					if (201 === data.status) {
+					if (204 === data.status) {
 						alert("Success. Record Updated.");
 					}
 				},

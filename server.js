@@ -62,6 +62,8 @@ app.post("/signedrequest", function (req, res) {
     var context = signedRequest.context,
       oauthToken = signedRequest.client.oauthToken,
       instanceUrl = signedRequest.client.instanceUrl;
+	
+	  console.log("context values",context);
 
     // this is not necessary but documented here for demo
     var query =
@@ -75,6 +77,8 @@ app.post("/signedrequest", function (req, res) {
         Authorization: "OAuth " + oauthToken,
       },
     };
+	
+	
 
     request(contactRequest, function (err, response, body) {
       console.log("Contact from API response", response);
@@ -97,6 +101,7 @@ app.post("/signedrequest", function (req, res) {
         res.render("qr", {
           imgSrc: url,
           sr: JSON.stringify(signedRequest),
+		  context: context
         });
       });
     });
