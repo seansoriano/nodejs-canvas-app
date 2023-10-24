@@ -84,19 +84,18 @@ app.post("/signedrequest", function (req, res) {
       console.log("Contact from API response body", response.body);
 	  console.log("Contact from API response body", response.body);
 
-	  var arr = response.body.records;
-	  console.log("array value ",arr[0]);
+	  var contactrecord = JSON.parse(body.records);
+	  console.log("array value ",contactrecord[0]);
 
-      var contact = response.body.records[0],
-        text =
+      var text =
           "MECARD:N:" +
-          contact.LastName +
+          contactrecord.LastName +
           "," +
-          contact.FirstName +
+          contactrecord.FirstName +
           ";TEL:" +
-          contact.Phone +
+          contactrecord.Phone +
           ";EMAIL:" +
-          contact.Email +
+          contactrecord.Email +
           ";;";
 
       console.log("Contact from signed request parameters", contact);
@@ -105,7 +104,7 @@ app.post("/signedrequest", function (req, res) {
         res.render("qr", {
           imgSrc: url,
           sr: JSON.stringify(signedRequest),
-		  contact: contact
+		  contact: contactrecord[0]
         });
       });
     });
