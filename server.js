@@ -82,6 +82,10 @@ app.post("/signedrequest", function (req, res) {
 
     request(contactRequest, function (err, response, body) {
       console.log("Contact from API response body", response.body);
+	  console.log("Contact from API response body", response.body);
+
+	  var arr = response.body.records;
+	  console.log("array value ",arr[0]);
 
       var contact = response.body.records[0],
         text =
