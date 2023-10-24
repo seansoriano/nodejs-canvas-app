@@ -58,49 +58,49 @@ app.post("/signedrequest", function (req, res) {
 
   var context = signedRequest.context;
 
-  if (context.environment?.parameters?.customContext === "record") {
-    var context = signedRequest.context,
-      oauthToken = signedRequest.client.oauthToken,
-      instanceUrl = signedRequest.client.instanceUrl;
+//   if (context.environment?.parameters?.customContext === "record") {
+//     var context = signedRequest.context,
+//       oauthToken = signedRequest.client.oauthToken,
+//       instanceUrl = signedRequest.client.instanceUrl;
 
-    // this is not necessary but documented here for demo
-    var query =
-      "SELECT Id, FirstName, LastName, Phone, Email FROM Contact WHERE Id = '" +
-      context.environment.parameters?.recordId +
-      "'";
+//     // this is not necessary but documented here for demo
+//     var query =
+//       "SELECT Id, FirstName, LastName, Phone, Email FROM Contact WHERE Id = '" +
+//       context.environment.parameters?.recordId +
+//       "'";
 
-    var contactRequest = {
-      url: instanceUrl + "/services/data/v52.0/query?q=" + query,
-      headers: {
-        Authorization: "OAuth " + oauthToken,
-      },
-    };
+//     var contactRequest = {
+//       url: instanceUrl + "/services/data/v52.0/query?q=" + query,
+//       headers: {
+//         Authorization: "OAuth " + oauthToken,
+//       },
+//     };
 
-    request(contactRequest, function (err, response, body) {
-      console.log("Contact from API response", response);
+//     request(contactRequest, function (err, response, body) {
+//       console.log("Contact from API response", response);
 
-      var contact = response,
-        text =
-          "MECARD:N:" +
-          contact.LastName +
-          "," +
-          contact.FirstName +
-          ";TEL:" +
-          contact.Phone +
-          ";EMAIL:" +
-          contact.Email +
-          ";;";
+//       var contact = response,
+//         text =
+//           "MECARD:N:" +
+//           contact.LastName +
+//           "," +
+//           contact.FirstName +
+//           ";TEL:" +
+//           contact.Phone +
+//           ";EMAIL:" +
+//           contact.Email +
+//           ";;";
 
-      console.log("Contact from signed request parameters", contact);
+//       console.log("Contact from signed request parameters", contact);
 
-      QRCode.toDataURL(text, function (err, url) {
-        res.render("qr", {
-          imgSrc: url,
-          sr: JSON.stringify(signedRequest),
-        });
-      });
-    });
-  } else {
+//       QRCode.toDataURL(text, function (err, url) {
+//         res.render("qr", {
+//           imgSrc: url,
+//           sr: JSON.stringify(signedRequest),
+//         });
+//       });
+//     });
+//   } else {
     var contact = context.environment.record,
       text =
         "MECARD:N:" +
@@ -123,7 +123,8 @@ app.post("/signedrequest", function (req, res) {
       });
     });
   }
-});
+// }
+);
 
 app.post("/realty", function (req, res) {
   console.log("I got signedrequest", req.body.signed_request);

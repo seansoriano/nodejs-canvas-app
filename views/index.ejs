@@ -47,6 +47,11 @@
 				<input type="text" placeholder="message" id="post" />
 				<button onclick="postToChatter();">Post to Chatter</button>
 			</div>
+
+			<div>
+				<input type="text" placeholder="update contact last name" id="lastname" />
+				<button onclick="postToChatter();">Update Contact</button>
+			</div>
 			<h1>List of Chatter Users</h1>
 			<div id="chatter-users"></div>
 		</div>
@@ -137,6 +142,30 @@
                         console.log("onComplete done", data);
                     }
                 });
+			}
+			function updateRecord() {
+				//get value from input 
+				var inputValue = Sfdc.canvas.byId("lastname").value;
+
+				//get record id from canvas context 
+				var recordId=sr.context.environment.record.Id;
+				var objType=sr.context.environment.record.attributes.type;
+
+				// Reference the Chatter user's URL from Context.Links object.
+				var url = sr.context.links.sobjectUrl+objType+"/" + recordId + "?_HttpMethod=PATCH";
+				var body= {"LastName":inputValue};
+
+				Sfdc.canvas.client.ajax(url, {
+					client: sr.client,
+					method: "POST",
+					contentType: "application/json",
+					data: JSON.stringify(body),
+					success: function (data) {
+						if (201 === data.status) {
+							alert("Success. Record Updated.");
+						}
+					},
+				});
 			}
 		</script>
 	</body>
