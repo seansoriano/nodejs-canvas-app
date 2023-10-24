@@ -72,7 +72,7 @@ app.post("/signedrequest", function (req, res) {
       "'";
 
     var contactRequest = {
-      url: instanceUrl + "/services/data/v52.0/query?q=" + query,
+      url: instanceUrl + context.links.queryUrl +"?q=" + query,
       headers: {
         Authorization: "OAuth " + oauthToken,
       },
@@ -81,7 +81,10 @@ app.post("/signedrequest", function (req, res) {
 	
 
     request(contactRequest, function (err, response, body) {
-      console.log("Contact from API response", response);
+      console.log("Contact from API response", response.body);
+	  console.log("Contact from API response xxx ", body);
+
+	  console.log("record info", JSON.parse(response.body));
 
       var contact = response,
         text =
