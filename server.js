@@ -81,12 +81,9 @@ app.post("/signedrequest", function (req, res) {
 	
 
     request(contactRequest, function (err, response, body) {
-      console.log("Contact from API response", response.body);
-	  console.log("Contact from API response xxx ", body);
+      console.log("Contact from API response body", response.body);
 
-	  console.log("record info", JSON.parse(response.body));
-
-      var contact = response,
+      var contact = response.body.records[0],
         text =
           "MECARD:N:" +
           contact.LastName +
@@ -104,7 +101,7 @@ app.post("/signedrequest", function (req, res) {
         res.render("qr", {
           imgSrc: url,
           sr: JSON.stringify(signedRequest),
-		  context: context
+		  contact: contact
         });
       });
     });
