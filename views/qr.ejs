@@ -22,13 +22,40 @@
   <body>
     <div class="slds-grid slds-grid_vertical">
 		<h1>Update Contact Information</h1>
-		<p>Contact First Name: <%= contact.FirstName %></p>
+
+    <div class="slds-form-element">
+      <label class="slds-form-element__label" for="text-input-id-54">First Name</label>
+      <div class="slds-form-element__control">
+        <%= contact.FirstName %>
+      </div>
+    </div>
+    <div class="slds-form-element">
+      <label class="slds-form-element__label" for="text-input-id-54">Email</label>
+      <div class="slds-form-element__control">
+        <%= contact.Email %>
+      </div>
+    </div>
+    <div class="slds-form-element">
+      <label class="slds-form-element__label" for="text-input-id-54">Salesforce ID</label>
+      <div class="slds-form-element__control">
+        <%= contact.Id %>
+      </div>
+    </div>
+
+    <div class="slds-form-element">
+      <label class="slds-form-element__label" for="text-input-id-56">Last Name</label>
+      <div class="slds-form-element__control">
+        <input type="text" value="<%- contact.LastName %>" id="lastname" class="slds-input"/>
+      </div>
+    </div>
+
+		<!-- <p>Contact First Name:</p>
 		<p>Contact Last Name: <%= contact.LastName %></p>
 		<p>Contact ID: <%= contact.Id %></p>
-		<p>Contact Email: <%= contact.Email %></p>
+		<p>Contact Email: </p>
 		<div>
-			<p>Contact Last Name: </p> <input type="text" value="<%- contact.LastName %>" id="lastname" />
-		</div>
+			<p>Contact Last Name: </p> <input type="text" value="<%- contact.LastName %>" id="lastname" class="slds-input"/>
+		</div> -->
     <button
       class="slds-button slds-button_brand" 
       onclick="updateRecord();">Update Contact
