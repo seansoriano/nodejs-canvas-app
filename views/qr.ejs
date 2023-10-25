@@ -27,16 +27,19 @@
 		<p>Contact ID: <%= contact.Id %></p>
 		<p>Contact Email: <%= contact.Email %></p>
 		<div>
-			<input type="text" placeholder="update contact last name" id="lastname" />
-			<button onclick="updateRecord();">Update Contact</button>
+			<p>Contact Last Name: </p> <input type="text" value="<%- contact.LastName %>" id="lastname" />
 		</div>
+    <button
+      class="slds-button slds-button_brand" 
+      onclick="updateRecord();">Update Contact
+    </button>
         <!-- <img src="<%- imgSrc %>" alt="Contact QR Code" /> -->
-        <button
+        <!-- <button
               class="slds-button slds-button_brand"
               onclick="validateQR();"
             >
               Update Flag
-            </button>
+            </button> -->
 
 
     </div>
