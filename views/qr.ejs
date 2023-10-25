@@ -24,30 +24,35 @@
     <div class="slds-form">
 
     <div class="slds-form-element slds-form-element_horizontal">
-      <label class="slds-form-element__label">First Name</label>
-      <div class="slds-form-element__control">
-        <%= contact.FirstName %>
-      </div>
-    </div>
-    <div class="slds-form-element slds-form-element_horizontal">
-      <label class="slds-form-element__label" for="text-input-id-54">Email</label>
-      <div class="slds-form-element__control">
-        <%= contact.Email %>
-      </div>
-    </div>
-    <div class="slds-form-element slds-form-element_horizontal">
-      <label class="slds-form-element__label" for="text-input-id-54">Salesforce ID</label>
+      <label class="slds-form-element__label">Salesforce ID</label>
       <div class="slds-form-element__control">
         <%= contact.Id %>
       </div>
     </div>
 
     <div class="slds-form-element slds-form-element_horizontal">
-      <label class="slds-form-element__label" for="text-input-id-56">Last Name</label>
+      <label class="slds-form-element__label">First Name</label>
       <div class="slds-form-element__control">
-        <input type="text" value="<%- contact.LastName %>" id="lastname" class="slds-input"/>
+        <%= contact.FirstName %>
       </div>
     </div>
+
+    <div class="slds-form-element slds-form-element_horizontal">
+      <label class="slds-form-element__label">Last Name</label>
+      <div class="slds-form-element__control">
+        <%= contact.LastName %>
+      </div>
+    </div>
+
+
+    <div class="slds-form-element slds-form-element_horizontal">
+      <label class="slds-form-element__label" for="email">Email</label>
+      <div class="slds-form-element__control">
+        <input type="text" value="<%- contact.Email %>" id="email" class="slds-input"/>
+      </div>
+    </div>
+
+
 
 		<!-- <p>Contact First Name:</p>
 		<p>Contact Last Name: <%= contact.LastName %></p>
@@ -101,7 +106,7 @@
 
 	  function updateRecord() {
 			//get value from input 
-			var inputValue = Sfdc.canvas.byId("lastname").value;
+			var inputValue = Sfdc.canvas.byId("email").value;
 
 			//get record id from canvas context 
 			var recordId=sr.context.environment.parameters.recordId
@@ -109,7 +114,7 @@
 
 			// Reference the Chatter user's URL from Context.Links object.
 			var url = sr.context.links.sobjectUrl+"Contact/" + recordId + "?_HttpMethod=PATCH";
-			var body= {"LastName":inputValue};
+			var body= {"Email":inputValue};
 
 			Sfdc.canvas.client.ajax(url, {
 				client: sr.client,
