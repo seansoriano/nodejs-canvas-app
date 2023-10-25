@@ -20,29 +20,29 @@
     </style>
   </head>
   <body>
-    <div class="slds-grid slds-grid_vertical">
-		<h1>Update Contact Information</h1>
+    <h1>Update Contact Information</h1>
+    <div class="slds-form">
 
-    <div class="slds-form-element">
-      <label class="slds-form-element__label" for="text-input-id-54">First Name</label>
+    <div class="slds-form-element slds-form-element_horizontal">
+      <label class="slds-form-element__label">First Name</label>
       <div class="slds-form-element__control">
         <%= contact.FirstName %>
       </div>
     </div>
-    <div class="slds-form-element">
+    <div class="slds-form-element slds-form-element_horizontal">
       <label class="slds-form-element__label" for="text-input-id-54">Email</label>
       <div class="slds-form-element__control">
         <%= contact.Email %>
       </div>
     </div>
-    <div class="slds-form-element">
+    <div class="slds-form-element slds-form-element_horizontal">
       <label class="slds-form-element__label" for="text-input-id-54">Salesforce ID</label>
       <div class="slds-form-element__control">
         <%= contact.Id %>
       </div>
     </div>
 
-    <div class="slds-form-element">
+    <div class="slds-form-element slds-form-element_horizontal">
       <label class="slds-form-element__label" for="text-input-id-56">Last Name</label>
       <div class="slds-form-element__control">
         <input type="text" value="<%- contact.LastName %>" id="lastname" class="slds-input"/>
